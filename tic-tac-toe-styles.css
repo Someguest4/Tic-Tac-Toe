@@ -5,6 +5,11 @@
     background-color: transparent;
     border-color: black;
     font-family: comic-sans,sans-serif;
+    
+
+}
+.square:disabled{
+    
 
 }
 

@@ -16,6 +16,7 @@
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <p id="nextplayer" >It is player <span id = "icon-in-text"><i class="fa-solid fa-o"></i></span>'s turn</p>
     <p id="wintext" class="invisible">Player <span id = "winicon"><i class="fa-solid fa-o"></i></span> has won the Game</p>
+    <p id="tietext" class = "invisible">No one has won the game.(Tie)</p>
     <button id="reset">Reset</button>
     </div>
     <script>
@@ -35,12 +36,18 @@
             const square = squares[index]
             if (square.innerHTML == ''){
                 document.getElementById("icon-in-text").innerHTML = symbol
-                //document.getElementById("winicon").innerHTML = symbol
                 square.innerHTML = symbol = toggle_symbol[symbol]
                 document.getElementById("winicon").innerHTML = symbol
-                console.log("print:",grid)
+                
                 grid[index] = symbol
+                console.log("print1:",grid)
                 checkResult()
+                if (!"#" in grid){
+                tie()
+                }
+                else{
+                    checkResult()
+                }
             }
             else{
                 if (!square.childNodes[0].classList.contains("fa-shake")){
@@ -48,10 +55,14 @@
                 setTimeout(()=>{square.childNodes[0].classList.remove("fa-shake")},200)
                 }
             }
+            
         }
 
         function win(blinking_squares){
             console.log("win")
+                    for (square of squares){
+                        square.disabled = true
+                    }
                     squares[blinking_squares[0]].classList.add("wincolor")
                     squares[blinking_squares[1]].classList.add("wincolor")
                     squares[blinking_squares[2]].classList.add("wincolor")
@@ -60,11 +71,20 @@
                     squares[blinking_squares[1]].childNodes[0].classList.add("fa-bounce")
                     squares[blinking_squares[2]].childNodes[0].classList.add("fa-bounce")
 
+                    squares[blinking_squares[0]].disabled = false
+                    squares[blinking_squares[2]].disabled = false
+                    squares[blinking_squares[1]].disabled = false
+
                     document.getElementById("nextplayer").classList.add("invisible")
                     document.getElementById("wintext").classList.remove("invisible")
+
+                    
+
+
         }
 
         function checkResult(){
+            console.log("print:",grid)
             if ( grid[0] != '#'){
                 console.log("inside grid 0 != #")    
                 if (grid[0] == grid[1] && grid[0] == grid[2] ){
@@ -108,6 +128,7 @@
 
 
                 }}
+            
             }
             
 
@@ -127,10 +148,20 @@
                 console.log("grid:",grid)
                 document.getElementById("wintext").classList.add("invisible")
                 document.getElementById("nextplayer").classList.remove("invisible")
+                
+                for (square of squares){
+                        square.disabled = false
+                    }
+                
+
             
         }
         }
-
+        
+        function tie(){
+            document.getElementById("nextplayer").classList.add("invisible")
+            document.getElementById("tietext").classList.remove("invisible")
+        }
 
 
     </script>
