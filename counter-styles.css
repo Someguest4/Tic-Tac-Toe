@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Wingdings';
+    src: url('your_font_path/wingdings.ttf') format('truetype');
+}
+.title{
+    font-size: 700px;
+    font-family: "Bitcount Prop Single", "Wingdings";
+    color:rgb(0, 172, 178)
+        
+    
+}
+.title:hover{
+    font-family:  "Bitcount Prop Single";
+    color:rgb(255, 0, 0)
+
+}
+p{
+    font-family: "Audiowide", "Wingdings";
+    text-align: center;
+}
+button{
+    color: black;
+    background-color: transparent;
+    border: none;
+    
+
+}
+.align-center{
+    text-align: center;
+}

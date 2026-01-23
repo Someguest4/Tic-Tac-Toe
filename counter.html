@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="counter-styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+    <p>Counter:<span id="CounterNum">0</span></p>
+    <div class= "align-center"><button class="title" id="minus">-</button><button class="title" id="plus">+</button></div>
+    <script>
+        let counter = parseInt(document.getElementById("CounterNum").innerText)
+        const minusButton = document.getElementById("minus")
+        minusButton.addEventListener("click",decreaseCounter)
+        const plusButton = document.getElementById("plus")
+        plusButton.addEventListener("click",increaseCounter)
+        function decreaseCounter(){
+            counter -= 1
+            document.getElementById("CounterNum").innerText = counter
+        }
+        
+        function increaseCounter(){
+            counter += 1
+            document.getElementById("CounterNum").innerText = counter
+        }
+    </script>
+</body>
+</html>
