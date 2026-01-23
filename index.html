@@ -14,15 +14,15 @@
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
-    <p id="nextplayer" >It is player <span id = "icon-in-text"><i class="fa-solid fa-o"></i></span>'s turn</p>
-    <p id="wintext" class="invisible">Player <span id = "winicon"><i class="fa-solid fa-o"></i></span> has won the Game</p>
+    <p id="nextplayer" >It is player <span id = "icon-in-text"><i class="fa-solid fa-circle-notch"></i></span>'s turn</p>
+    <p id="wintext" class="invisible">Player <span id = "winicon"><i class="fa-solid fa-circle-notch"></i></span> has won the Game</p>
     <p id="tietext" class = "invisible">No one has won the game.(Tie)</p>
     <button id="reset">Reset</button>
     </div>
     <script>
         const toggle_symbol = {
-            '<i class="fa-solid fa-x"></i>':'<i class="fa-solid fa-o"></i>',
-            '<i class="fa-solid fa-o"></i>':'<i class="fa-solid fa-x"></i>'
+            '<i class="fa-solid fa-x"></i>':'<i class="fa-solid fa-circle-notch"></i>',
+            '<i class="fa-solid fa-circle-notch"></i>':'<i class="fa-solid fa-x"></i>'
         } 
         let symbol
         let grid = Array(9).fill("#")
@@ -55,6 +55,7 @@
 
         function win(blinking_squares){
             console.log("win")
+                    winflag = true
                     for (square of squares){
                         square.disabled = true
                     }
@@ -147,7 +148,7 @@
                 document.getElementById("wintext").classList.add("invisible")
                 document.getElementById("nextplayer").classList.remove("invisible")
                 document.getElementById("tietext").classList.add("invisible")
-                
+                let winflag = false
                 for (square of squares){
                         square.disabled = false
                     }
@@ -158,8 +159,10 @@
         }
         
         function tie(){
-            document.getElementById("nextplayer").classList.add("invisible")
-            document.getElementById("tietext").classList.remove("invisible")
+            if (winflag == false){
+                document.getElementById("nextplayer").classList.add("invisible")
+                document.getElementById("tietext").classList.remove("invisible")
+        }
         }
 
 
