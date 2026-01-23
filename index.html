@@ -14,6 +14,8 @@
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
+    <p id="nextplayer" >It is player <span id = "icon-in-text"><i class="fa-solid fa-o"></i></span>'s turn</p>
+    <p id="wintext" class="invisible">Player <span id = "winicon"><i class="fa-solid fa-o"></i></span> has won the Game</p>
     <button id="reset">Reset</button>
     </div>
     <script>
@@ -32,7 +34,10 @@
         function draw(index){
             const square = squares[index]
             if (square.innerHTML == ''){
+                document.getElementById("icon-in-text").innerHTML = symbol
+                //document.getElementById("winicon").innerHTML = symbol
                 square.innerHTML = symbol = toggle_symbol[symbol]
+                document.getElementById("winicon").innerHTML = symbol
                 console.log("print:",grid)
                 grid[index] = symbol
                 checkResult()
@@ -44,101 +49,62 @@
                 }
             }
         }
+
+        function win(blinking_squares){
+            console.log("win")
+                    squares[blinking_squares[0]].classList.add("wincolor")
+                    squares[blinking_squares[1]].classList.add("wincolor")
+                    squares[blinking_squares[2]].classList.add("wincolor")
+
+                    squares[blinking_squares[0]].childNodes[0].classList.add("fa-bounce")
+                    squares[blinking_squares[1]].childNodes[0].classList.add("fa-bounce")
+                    squares[blinking_squares[2]].childNodes[0].classList.add("fa-bounce")
+
+                    document.getElementById("nextplayer").classList.add("invisible")
+                    document.getElementById("wintext").classList.remove("invisible")
+        }
+
         function checkResult(){
             if ( grid[0] != '#'){
                 console.log("inside grid 0 != #")    
                 if (grid[0] == grid[1] && grid[0] == grid[2] ){
-                    console.log("win")
-                    squares[0].classList.add("wincolor")
-                    squares[1].classList.add("wincolor")
-                    squares[2].classList.add("wincolor")
+                    win([0,1,2])
 
-                    squares[0].childNodes[0].classList.add("fa-bounce")
-                    squares[1].childNodes[0].classList.add("fa-bounce")
-                    squares[2].childNodes[0].classList.add("fa-bounce")
+
                 }}
             if ( grid[3] != '#'){
                 if (grid[3] == grid[4] && grid[3] == grid[5] ){
-                    console.log("win")
-                    squares[3].classList.add("wincolor")
-                    squares[4].classList.add("wincolor")
-                    squares[5].classList.add("wincolor")
-                    
-                    squares[3].childNodes[0].classList.add("fa-bounce")
-                    squares[4].childNodes[0].classList.add("fa-bounce")
-                    squares[5].childNodes[0].classList.add("fa-bounce")
+                    win([3,4,5])
                 }}
             if ( grid[6] != '#'){
                 if (grid[6] == grid[7] && grid[6] == grid[8] ){
-                    console.log("win")
-                    squares[6].classList.add("wincolor")
-                    squares[7].classList.add("wincolor")
-                    squares[8].classList.add("wincolor")
-                    
-                    squares[6].childNodes[0].classList.add("fa-bounce")
-                    squares[7].childNodes[0].classList.add("fa-bounce")
-                    squares[8].childNodes[0].classList.add("fa-bounce")
+                    win([6,7,8])
                 }}
             
 
             if ( grid[0] != '#'){
                 console.log("inside grid 0 != #")    
                 if (grid[0] == grid[3] && grid[0] == grid[6] ){
-                    console.log("win")
-                    squares[0].classList.add("wincolor")
-                    squares[3].classList.add("wincolor")
-                    squares[6].classList.add("wincolor")
-                    
-                    squares[0].childNodes[0].classList.add("fa-bounce")
-                    squares[3].childNodes[0].classList.add("fa-bounce")
-                    squares[6].childNodes[0].classList.add("fa-bounce")
+                    win([0,3,6])
                 }}
             if ( grid[1] != '#'){
                 if (grid[1] == grid[4] && grid[1] == grid[7] ){
-                    console.log("win")
-                    squares[1].classList.add("wincolor")
-                    squares[4].classList.add("wincolor")
-                    squares[7].classList.add("wincolor")
-                    
-                    squares[1].childNodes[0].classList.add("fa-bounce")
-                    squares[4].childNodes[0].classList.add("fa-bounce")
-                    squares[7].childNodes[0].classList.add("fa-bounce")
+                    win([1,4,7])
                 }}
             if ( grid[2] != '#'){
                 if (grid[2] == grid[5] && grid[2] == grid[8] ){
-                    console.log("win")
-                    squares[2].classList.add("wincolor")
-                    squares[5].classList.add("wincolor")
-                    squares[8].classList.add("wincolor")
-                    
-                    squares[2].childNodes[0].classList.add("fa-bounce")
-                    squares[5].childNodes[0].classList.add("fa-bounce")
-                    squares[8].childNodes[0].classList.add("fa-bounce")
+                    win([2,5,8])
                 }}
 
 
             if ( grid[0] != '#'){
                 console.log("inside grid 0 != #")    
                 if (grid[0] == grid[4] && grid[0] == grid[8] ){
-                    console.log("win")
-                    squares[0].classList.add("wincolor")
-                    squares[4].classList.add("wincolor")
-                    squares[8].classList.add("wincolor")
-
-                    squares[0].childNodes[0].classList.add("fa-bounce")
-                    squares[4].childNodes[0].classList.add("fa-bounce")
-                    squares[8].childNodes[0].classList.add("fa-bounce")
+                    win([0,4,8])
                 }}
             if ( grid[2] != '#'){
                 if (grid[2] == grid[4] && grid[2] == grid[6] ){
-                    console.log("win")
-                    squares[2].classList.add("wincolor")
-                    squares[4].classList.add("wincolor")
-                    squares[6].classList.add("wincolor")
-
-                    squares[2].childNodes[0].classList.add("fa-bounce")
-                    squares[4].childNodes[0].classList.add("fa-bounce")
-                    squares[6].childNodes[0].classList.add("fa-bounce")
+                    win([2,4,6])
 
 
                 }}
@@ -151,12 +117,16 @@
             for (let square of squares){
                 square.innerHTML = ''
                 symbol = '<i class="fa-solid fa-x"></i>'
+                document.getElementById("icon-in-text").innerHTML = toggle_symbol[symbol]
+                document.getElementById("winicon").innerHTML = symbol
                 square.classList.remove("wincolor")
                 if (square.childNodes[0] != undefined){
                     square.childNodes[0].classList.remove("fa-bounce")
                 }
                 grid = Array(9).fill("#")
                 console.log("grid:",grid)
+                document.getElementById("wintext").classList.add("invisible")
+                document.getElementById("nextplayer").classList.remove("invisible")
             
         }
         }

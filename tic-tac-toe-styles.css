@@ -31,3 +31,8 @@
 .wincolor{
     background-color: rgb(0, 100, 142);
 }
+
+
+.invisible{
+    visibility: hidden;
+}
