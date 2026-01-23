@@ -1,1 +1,1 @@
-My Tic Tac Toe game + a little first project
+My Tic Tac Toe game
