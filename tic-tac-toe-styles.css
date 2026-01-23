@@ -37,3 +37,7 @@
 .invisible{
     visibility: hidden;
 }
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}

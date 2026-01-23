@@ -42,12 +42,7 @@
                 grid[index] = symbol
                 console.log("print1:",grid)
                 checkResult()
-                if (!"#" in grid){
-                tie()
-                }
-                else{
-                    checkResult()
-                }
+                
             }
             else{
                 if (!square.childNodes[0].classList.contains("fa-shake")){
@@ -126,9 +121,12 @@
                 if (grid[2] == grid[4] && grid[2] == grid[6] ){
                     win([2,4,6])
 
+            
 
                 }}
-            
+            if (!grid.includes("#")){
+                    tie()
+                }
             }
             
 
@@ -148,6 +146,7 @@
                 console.log("grid:",grid)
                 document.getElementById("wintext").classList.add("invisible")
                 document.getElementById("nextplayer").classList.remove("invisible")
+                document.getElementById("tietext").classList.add("invisible")
                 
                 for (square of squares){
                         square.disabled = false
