@@ -27,6 +27,7 @@
         let symbol
         let grid = Array(9).fill("#")
         let squares = document.getElementsByClassName("square")
+        let winflag = false
         
         for (let [index,square] of Array.from(squares).entries()){
             square.addEventListener("click", () => draw(index))
