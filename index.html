@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="tic-tac-toe-light-styles.css">
+    <link rel="stylesheet" href="tic-tac-toe-dark-styles.css">
     <link rel="icon" type="image/x-icon" href="chess-board-solid-full.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +12,8 @@
 <body>
     <p>Dark Mode: </p>
     <label class="switch">
-    <input type="checkbox" id="theme_switcher" onclick="document.getElementsByTagName('link')[0].href = this.checked ? 'tic-tac-toe-dark-styles.css' : 'tic-tac-toe-light-styles.css'">
-    <span class="slider round"></span>
+    <input type="checkbox" id="theme_switcher" checked onclick="document.getElementsByTagName('link')[0].href = this.checked ? 'tic-tac-toe-dark-styles.css' : 'tic-tac-toe-light-styles.css'">
+    <span  class="slider round" ></span>
     </label>
     
     <div id="allign-middle">
@@ -155,7 +155,7 @@
                 document.getElementById("wintext").classList.add("invisible")
                 document.getElementById("nextplayer").classList.remove("invisible")
                 document.getElementById("tietext").classList.add("invisible")
-                let winflag = false
+                winflag = false
                 for (square of squares){
                         square.disabled = false
                     }
