@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="tic-tac-toe-styles.css">
+    <link rel="stylesheet" href="tic-tac-toe-light-styles.css">
     <link rel="icon" type="image/x-icon" href="chess-board-solid-full.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,12 @@
     <script src="https://kit.fontawesome.com/46f827a615.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <p>Dark Mode: </p>
+    <label class="switch">
+    <input type="checkbox" id="theme_switcher" onclick="document.getElementsByTagName('link')[0].href = this.checked ? 'tic-tac-toe-dark-styles.css' : 'tic-tac-toe-light-styles.css'">
+    <span class="slider round"></span>
+    </label>
+    
     <div id="allign-middle">
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
     <div class="row"><button class="square"></button><button class="square"></button><button class="square"></button></div>
