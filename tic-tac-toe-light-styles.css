@@ -2,10 +2,10 @@
     vertical-align: top;
     background-color: transparent;
     font-family: comic-sans,sans-serif;
-
     border: 2px solid #000;
     box-shadow: none;
     transition: all 0.5s ease;
+    font-size: 10vh;
 }
 
 .square:nth-child(2) {
