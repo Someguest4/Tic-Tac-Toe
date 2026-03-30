@@ -26,6 +26,22 @@
     <button id="reset">Reset</button>
     </div>
     <script>
+        window.onload = function(){
+            if (window.screen.height < window.screen.width){
+                squares = document.getElementsByClassName("square")
+                for (square of squares){
+                    square.style.height = "20vh"
+                    square.style.width = "20vh"
+                }
+            }
+            else{
+                squares = document.getElementsByClassName("square")
+                for (square of squares){
+                    square.style.height = "20vw"
+                    square.style.width = "20vw"
+                }
+            }
+        }
         const toggle_symbol = {
             '<i class="fa-solid fa-x"></i>':'<i class="fa-solid fa-circle-notch"></i>',
             '<i class="fa-solid fa-circle-notch"></i>':'<i class="fa-solid fa-x"></i>'
